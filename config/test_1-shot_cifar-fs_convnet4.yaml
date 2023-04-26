@@ -1,0 +1,26 @@
+test_dataset:
+  type: json_dataset
+  name: cifar-fs
+  args:
+    data_file: filelists/cifar-fs/novel.json
+    transform_list: 
+      - Resize
+      - ToTensor
+      - Normalize
+    image_size: 32
+
+test_ep:
+  batch_num: 800
+  n: 5
+  k: 1
+  q: 15
+
+model:
+  name: paper_model
+  args:
+    k: 9
+    encoder:
+      name: convnet4
+      args: {}
+
+max_epoch: 10

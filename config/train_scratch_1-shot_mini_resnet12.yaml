@@ -1,0 +1,49 @@
+train_dataset:
+  type: simple_dataset
+  name: mini
+  args:
+    tail_path: mini-imagenet/train
+    transform_list: 
+      - Resize
+      - ToTensor
+      - Normalize
+    image_size: 80
+    
+val_dataset:
+  type: simple_dataset
+  name: mini
+  args:
+    tail_path: mini-imagenet/val
+    transform_list: 
+      - Resize
+      - ToTensor
+      - Normalize
+    image_size: 80
+
+train_ep:
+  batch_num: 200
+  n: 5
+  k: 1
+  q: 15
+  
+val_ep:
+  batch_num: 200
+  n: 5
+  k: 1
+  q: 15
+
+model:
+  name: paper_model
+  args:
+    k: 9
+    encoder:
+      name: resnet12
+      args: {}
+      
+optimizer:
+  name: SGD
+  args:
+    lr: 0.001
+    weight_decay: 5.e-4
+
+max_epoch: 200

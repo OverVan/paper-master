@@ -1,0 +1,29 @@
+test_dataset:
+  type: json_dataset
+  name: cifar-fs
+  args:
+    data_file: filelists/cifar-fs/novel.json
+    transform_list: 
+      - Scale
+      - CenterCrop
+      - ToTensor
+      - Normalize
+    image_size: 32
+
+test_ep:
+  batch_num: 500
+  n: 5
+  k: 5
+  q: 15
+
+model:
+  name: paper_model
+  args:
+    k: 9
+    encoder:
+      name: wrn
+      args:
+        num_classes: 64
+        loss_type: softmax
+
+max_epoch: 20

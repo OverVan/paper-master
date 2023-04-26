@@ -1,0 +1,28 @@
+test_dataset:
+  type: simple_dataset
+  name: tiered
+  args:
+    tail_path: tiered_imagenet/test
+    transform_list: 
+      - Scale
+      - CenterCrop
+      - ToTensor
+      - Normalize
+    image_size: 80
+
+test_ep:
+  batch_num: 500
+  n: 5
+  k: 1
+  q: 15
+
+model:
+  name: paper_model
+  args:
+    k: 9
+    encoder:
+      name: wrn
+      args: 
+        num_classes: 200
+
+max_epoch: 20

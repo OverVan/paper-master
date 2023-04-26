@@ -1,0 +1,26 @@
+test_dataset:
+  type: simple_dataset
+  name: mini
+  args:
+    tail_path: mini-imagenet/test
+    transform_list: 
+      - Resize
+      - ToTensor
+      - Normalize
+    image_size: 84
+
+test_ep:
+  batch_num: 800
+  n: 5
+  k: 5
+  q: 15
+
+model:
+  name: paper_model
+  args:
+    k: 9
+    encoder:
+      name: convnet4
+      args: {}
+
+max_epoch: 10

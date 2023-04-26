@@ -1,0 +1,27 @@
+test_dataset:
+  type: simple_dataset
+  name: mini
+  args:
+    tail_path: mini-imagenet/test
+    transform_list: 
+      - Scale
+      - CenterCrop
+      - ToTensor
+      - Normalize
+    image_size: 80
+
+test_ep:
+  batch_num: 500
+  n: 5
+  k: 5
+  q: 15
+
+model:
+  name: no_model
+  args:
+    encoder:
+      name: wrn
+      args: 
+        num_classes: 200
+
+max_epoch: 20

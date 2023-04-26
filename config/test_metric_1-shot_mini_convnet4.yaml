@@ -1,0 +1,27 @@
+test_dataset:
+  type: simple_dataset
+  name: mini
+  args:
+    tail_path: mini-imagenet/test
+    transform_list: 
+      - Resize
+      - ToTensor
+      - Normalize
+    image_size: 84
+
+test_ep:
+  batch_num: 800
+  n: 5
+  k: 1
+  q: 15
+
+model:
+  name: metric_model
+  args:
+    k: 9
+    metric: euclidean_distance
+    encoder:
+      name: convnet4
+      args: {}
+
+max_epoch: 10
